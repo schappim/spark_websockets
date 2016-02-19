@@ -40,7 +40,7 @@
 #include "spark_wiring_string.h"
 //#include "Arduino.h"
 
-class WebSocketClient {
+class WebSocketClient(String local_ip) {
 public:
   typedef void (*OnMessage)(WebSocketClient client, char* message);
   typedef void (*OnOpen)(WebSocketClient client);
@@ -57,7 +57,6 @@ public:
   void onError(OnError function);
   bool send(char* message);
 private:
-String local_ip = WiFi.localIP();
 String WebSocketClientStringTable = {
 			"GET / HTTP/1.1\x0d\x0a"
 			"Upgrade: websocket\x0d\x0a"
